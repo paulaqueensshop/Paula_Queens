@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7e8ef">
+  <title>Paula Queens | Shop</title>
+  <style>
+    :root{--pink:#d94f87;--deep:#29202a;--cream:#fff9fc;--muted:#756b73}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--cream);color:var(--deep)}
+    header{background:#fff;padding:16px 6%;display:flex;align-items:center;justify-content:space-between;gap:12px;position:sticky;top:0;z-index:5;box-shadow:0 2px 12px #0000000c}
+    .brand{font-size:1.35rem;font-weight:800;letter-spacing:.4px}.brand span{color:var(--pink)}
+    nav a{color:var(--deep);text-decoration:none;margin-left:18px;font-weight:600;font-size:.95rem}
+    .hero{padding:70px 7%;background:linear-gradient(120deg,#f9dce8,#fff7fb);text-align:center}
+    .hero h1{font-size:clamp(2rem,6vw,3.6rem);margin:0 0 12px}.hero p{color:var(--muted);font-size:1.05rem;max-width:580px;margin:0 auto 24px;line-height:1.6}
+    .btn{display:inline-block;background:var(--pink);color:#fff;text-decoration:none;border:0;border-radius:9px;padding:13px 22px;font-weight:700;cursor:pointer}
+    main{max-width:1100px;margin:auto;padding:42px 6%}
+    .section-head{text-align:center;margin-bottom:25px}.section-head h2{margin:0 0 8px;font-size:1.8rem}.section-head p{margin:0;color:var(--muted)}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+    .card{background:#fff;border:1px solid #f0dce6;border-radius:14px;overflow:hidden;box-shadow:0 5px 18px #38202a0a}
+    .photo{height:190px;background:linear-gradient(135deg,#f7dce8,#f4edf1);display:grid;place-items:center;color:#8a6879;font-size:.9rem;text-align:center;padding:16px}
+    .card-body{padding:16px}.card h3{margin:0 0 7px}.card p{color:var(--muted);font-size:.92rem;line-height:1.45;min-height:38px}
+    .price{font-weight:800;color:var(--pink);margin:12px 0}
+    .card .btn{width:100%;text-align:center}
+    .note{background:#fff;padding:22px;border-radius:12px;border:1px solid #f0dce6;text-align:center;margin-top:28px;color:var(--muted);line-height:1.6}
+    footer{background:var(--deep);color:#fff;text-align:center;padding:28px 6%;line-height:1.8}
+    footer a{color:#ffd5e5}
+    @media(max-width:560px){header{padding:14px 5%}nav a{margin-left:10px;font-size:.85rem}.hero{padding:55px 6%}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">Paula <span>Queens</span></div>
+    <nav><a href="#shop">Shop</a><a href="#contact">Contact</a></nav>
+  </header>
+
+  <section class="hero">
+    <h1>Welcome to Paula Queens</h1>
+    <p>Discover something you’ll love. Browse our collection and place your order directly through WhatsApp.</p>
+    <a class="btn" href="#shop">Explore the shop</a>
+  </section>
+
+  <main>
+    <section id="shop">
+      <div class="section-head">
+        <h2>Our Products</h2>
+        <p>Replace these sample items with your real products, photos and prices.</p>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <div class="photo">Add your product photo here</div>
+          <div class="card-body"><h3>Product One</h3><p>Add a short description of this product.</p><div class="price">KSh —</div><a class="btn order" href="#" data-product="Product One">Order on WhatsApp</a></div>
+        </article>
+        <article class="card">
+          <div class="photo">Add your product photo here</div>
+          <div class="card-body"><h3>Product Two</h3><p>Add a short description of this product.</p><div class="price">KSh —</div><a class="btn order" href="#" data-product="Product Two">Order on WhatsApp</a></div>
+        </article>
+        <article class="card">
+          <div class="photo">Add your product photo here</div>
+          <div class="card-body"><h3>Product Three</h3><p>Add a short description of this product.</p><div class="price">KSh —</div><a class="btn order" href="#" data-product="Product Three">Order on WhatsApp</a></div>
+        </article>
+      </div>
+      <div class="note">Want to order? Tap any “Order on WhatsApp” button. We’ll help you add your actual product details and pictures next.</div>
+    </section>
+  </main>
+
+  <footer id="contact">
+    <strong>Paula Queens</strong><br>
+    Orders and enquiries: <a href="https://wa.me/254722717865">WhatsApp us</a><br>
+    © <span id="year"></span> Paula Queens
+  </footer>
+
+  <script>
+    const whatsappNumber = "254722717865";
+    document.querySelectorAll(".order").forEach(button => {
+      button.addEventListener("click", event => {
+        event.preventDefault();
+        const product = button.dataset.product;
+        const message = encodeURIComponent(`Hello Paula Queens, I would like to order ${product}. Please share the details.`);
+        window.open(`https://wa.me/${whatsappNumber}?text=${message}`, "_blank");
+      });
+    });
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
